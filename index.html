@@ -11,10 +11,66 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body class="p-0 m-0">
-        <div id="app">{{ message }}
-        
-        
-        
+        <div id="bg-top">
+            <div id="app" class="container p-0 d-flex">
+                <aside class="overflow-scroll">
+                    <div id="asideTop" class="d-flex justify-content-between align-items-center border-end">
+                        <div id="user">
+                            <img src="img/avatar_2.jpg" alt="My image">
+                            <span class="ps-1">Andrea</span>
+                        </div>
+                        <div id="iconAside" class="d-flex align-items-center">
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                    <div id="notifiche" class="d-flex">
+                        <i class="fa-solid fa-bell-slash bg-white rounded-circle p-2 m-2"></i>
+                        <div>
+                            <h6>Ricevi notifiche di nuovi messaggi</h6>
+                            <h6 class="text-decoration-underline text-secondary">Attiva notifiche desktop</h6>
+                        </div>
+                    </div>
+                    <!-- INSERISCI BARRA DI RICERCA -->
+                    <div class="ps-1 d-flex contatto" v-for="(contact, index) in contacts" @click="cambiaChat(index)" :class="(index == contattoInChat)?'selezionato':''">
+                        <img class="vertical-align-bottom" :src="contact.avatar" :alt="'Immagine ' + contact.name">
+                        <div class="p-2 w-100">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="fs-5 display-inline-block">{{contact.name}}</h5>
+                                <h6 class="text-secondary display-inline-block">{{contact.messages[contact.messages.length - 1].date}}</h6> 
+                            </div>
+                            <h6 class="text-secondary">{{contact.messages[contact.messages.length - 1].message}}</h6>
+                        </div>
+                    </div>
+                </aside>
+                <main>
+                    <div id="mainTop" class="d-flex justify-content-between align-items-center border-start">
+                        <div class="d-flex m-2">
+                            <img :src="contacts[contattoInChat].avatar" alt="'Immagine ' + contact.name">
+                            <div class="p-2">
+                                <h5>{{contacts[contattoInChat].name}}</h5>
+                                <h6 class="text-secondary">Ultimo accesso {{contacts[contattoInChat].messages[2].date}}</h6>  <!-- dinamicizza il [2] -->
+                            </div>
+                        </div>
+                        <div id="iconMain" class="d-flex align-items-center m-2">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                    <div id="mainMiddle" class="p-5">
+                        <div v-for="(contact, index) in contacts[contattoInChat].messages">
+                            <div class="p-2 m-2 rounded-3 msg-test" :class="contact.status">{{contact.message}}</div>
+                        </div>
+                    </div>
+                    <div id="mainBottom" class="d-flex justify-content-between align-items-center">
+                        <i class="fa-regular fa-face-smile p-5 fs-3"></i>
+                        <input v-model="nuovoMessaggio" @keyup.enter="inviaMessaggio" type="text" class="rounded-2 border-0 w-100 h-50" placeholder="Scrivi un messaggio">
+                        <i class="fa-solid fa-microphone p-5 fs-3"></i>
+                    </div>
+                </main>
+            </div>
         </div>
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <script type="text/javascript" src="js/main.js"></script>

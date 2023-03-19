@@ -1,4 +1,86 @@
+html{
+   font-size: 12px;
+}
+
 *{
    font-family: sans-serif;
 }
 
+body{
+   background-color: #DADAD3;
+}
+
+.container{
+   background-color: white;
+   height: calc(100vh - 4rem);
+}
+
+#bg-top{
+   background-color: #009688;
+   height: 10vh;
+   padding-top: 2rem;
+}
+
+aside{
+   width: 30%;
+}
+
+#asideTop, #mainTop, #mainBottom{
+   background-color: #E9E9E9;
+   height: 6rem;
+}
+
+img{
+   height: 4rem;
+   border-radius: 50%;
+}
+
+.fa-solid{ 
+   color: #B1B1B1;
+   padding: 0.5rem;
+   font-size: 1.5rem;
+}
+
+#notifiche{
+   background-color: #8DD9FB;
+}
+
+#notifiche i{
+   color: #8DD9FB;
+}
+
+main{
+   width: 70%;
+}
+
+#mainMiddle{
+   height: calc(100% - 12rem);
+   background-image: url(../img/mine.jpg);
+}
+
+#mainBottom i {
+   color: #6D7D90;
+}
+
+.msg-test{
+   width: 40%;
+}
+
+.received{
+   background-color: white;
+}
+
+.sent{
+   background-color: #D5F9BA;
+   position: relative;
+   left: 41rem;
+   top: 0;
+}
+
+.contatto:hover{
+   background-color: lightgray;
+}
+
+.selezionato{
+   background-color: lightgray;
+}
