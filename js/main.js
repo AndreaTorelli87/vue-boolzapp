@@ -1,10 +1,13 @@
 const { createApp } = Vue
+const DateTime = luxon.DateTime;
 
 createApp({
   data() {
     return {
       contattoInChat: 0,
-      nuovoMessaggio: [],
+      oraCorta:  DateTime.now().setLocale('it').toLocaleString(DateTime.TIME_24_SIMPLE),
+      ricerca: [],
+      nuovoMessaggio: null,
       contacts: [
         {
           name: 'Michele',
@@ -175,10 +178,9 @@ createApp({
     stampiamo(pippo){
       console.log(pippo)
     },
-   
     inviaMessaggio(){
       this.contacts[this.contattoInChat].messages.push({
-        date: null,
+        date: this.oraCorta,
         message: this.nuovoMessaggio,
         status: 'sent'
       });
@@ -188,7 +190,7 @@ createApp({
      rispostaAutomatica(){
       setTimeout(() => {
         this.contacts[this.contattoInChat].messages.push({
-          date: null,
+          date: this.oraCorta,
           message: "ok",
           status: 'received'
         });
@@ -197,5 +199,8 @@ createApp({
     cambiaChat(contact){
       this.contattoInChat = contact;
     },
+    testiamo(pippo){
+      DateTime.fromObject(pippo).setLocale('it').toLocaleString(DateTime.TIME_24_SIMPLE)
+    }
   }
 }).mount('#app')

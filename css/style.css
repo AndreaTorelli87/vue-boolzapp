@@ -11,7 +11,6 @@ body{
 }
 
 .container{
-   background-color: white;
    height: calc(100vh - 4rem);
 }
 
@@ -25,9 +24,9 @@ aside{
    width: 30%;
 }
 
-#asideTop, #mainTop, #mainBottom{
+#asideTop, #mainTop, #mainBottom, #search{
    background-color: #E9E9E9;
-   height: 6rem;
+   height: 5rem;
 }
 
 img{
@@ -39,14 +38,18 @@ img{
    color: #B1B1B1;
    padding: 0.5rem;
    font-size: 1.5rem;
+   cursor: pointer;
 }
 
 #notifiche{
    background-color: #8DD9FB;
+   height: 5rem;
 }
 
 #notifiche i{
    color: #8DD9FB;
+   cursor: pointer;
+   padding: 13px 11px;
 }
 
 main{
@@ -54,27 +57,28 @@ main{
 }
 
 #mainMiddle{
-   height: calc(100% - 12rem);
+   height: calc(100% - 10rem);
    background-image: url(../img/mine.jpg);
 }
 
 #mainBottom i {
    color: #6D7D90;
+   cursor: pointer;
 }
 
-.msg-test{
-   width: 40%;
+.msg{
+   min-width: 40%;
+   max-width: 80%;
 }
 
 .received{
    background-color: white;
+   align-self: flex-start;
 }
 
 .sent{
    background-color: #D5F9BA;
-   position: relative;
-   left: 41rem;
-   top: 0;
+   align-self: flex-end;
 }
 
 .contatto:hover{
