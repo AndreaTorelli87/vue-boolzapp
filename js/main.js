@@ -175,6 +175,14 @@ createApp({
     }
   },
   methods: {
+    funzioneDiRicerca(){
+      this.contacts.forEach((element) => {
+      if(element.name.includes(this.ricerca)){
+        element.visible = true;
+      } else {
+        element.visible = false;
+      }
+    })},
     stampiamo(pippo){
       console.log(pippo)
     },

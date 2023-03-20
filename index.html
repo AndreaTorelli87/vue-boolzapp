@@ -13,7 +13,7 @@
     <body class="p-0 m-0">
         <div id="bg-top">
             <div id="app" class="container p-0 d-flex">
-                <aside class="overflow-scroll bg-white">
+                <aside class="bg-white overflow-scroll">
                     <div id="asideTop" class="d-flex justify-content-between align-items-center border-end p-1">
                         <div id="user">
                             <img src="img/avatar_2.jpg" alt="My image">
@@ -35,10 +35,10 @@
                     <!-- INSERISCI BARRA DI RICERCA -->
                     <div id="search" class="input-group d-flex p-2" role="search">
                         <span class="input-group-text border-end-0"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" class="form-control border-start-0" placeholder="Cerca o inizia una nuova chat" v-model="ricerca">
+                        <input type="text" class="form-control border-start-0" placeholder="Cerca o inizia una nuova chat" v-model="ricerca" @keyup="funzioneDiRicerca">
                     </div>
                     <!-- INIZIO LISTA CONTATTI -->
-                    <div class="py-1 px-3 d-flex contatto border-bottom" v-for="(contact, index) in contacts" @click="cambiaChat(index)" :class="(index == contattoInChat)?'selezionato':''">
+                    <div class="py-1 px-3 d-flex contatto border-bottom" v-for="(contact, index) in contacts" v-show="contact.visible" @click="cambiaChat(index)" :class="(index == contattoInChat)?'selezionato':''">
                         <img class="vertical-align-bottom" :src="contact.avatar" :alt="'Immagine ' + contact.name">
                         <div class="p-2 w-100">
                             <div class="d-flex justify-content-between">
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <!-- PARTE CENTRALE -->
-                    <div id="mainMiddle" class="p-5">
+                    <div id="mainMiddle" class="p-5 overflow-scroll">
                         <div class="d-flex flex-column" v-for="(contact, index) in contacts[contattoInChat].messages">
                             <div class="p-2 m-2 rounded-3 d-flex justify-content-between msg" :class="contact.status">{{contact.message}}
                                 <span class="fs-6 align-self-end text-secondary">{{oraCorta}}</span>
