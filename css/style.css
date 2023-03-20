@@ -88,3 +88,7 @@ main{
 .selezionato{
    background-color: lightgray;
 }
+
+.my-flex{
+   display: flex;
+}

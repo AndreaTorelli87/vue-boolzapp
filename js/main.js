@@ -6,7 +6,7 @@ createApp({
     return {
       contattoInChat: 0,
       oraCorta:  DateTime.now().setLocale('it').toLocaleString(DateTime.TIME_24_SIMPLE),
-      ricerca: [],
+      ricerca: null,
       nuovoMessaggio: null,
       contacts: [
         {

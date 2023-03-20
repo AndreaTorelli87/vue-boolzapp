@@ -38,7 +38,7 @@
                         <input type="text" class="form-control border-start-0" placeholder="Cerca o inizia una nuova chat" v-model="ricerca" @keyup="funzioneDiRicerca">
                     </div>
                     <!-- INIZIO LISTA CONTATTI -->
-                    <div class="py-1 px-3 d-flex contatto border-bottom" v-for="(contact, index) in contacts" v-show="contact.visible" @click="cambiaChat(index)" :class="(index == contattoInChat)?'selezionato':''">
+                    <div class="py-1 px-3 my-flex contatto border-bottom" v-for="(contact, index) in contacts" v-show="contact.visible" @click="cambiaChat(index)" :class="(index == contattoInChat)?'selezionato':''">
                         <img class="vertical-align-bottom" :src="contact.avatar" :alt="'Immagine ' + contact.name">
                         <div class="p-2 w-100">
                             <div class="d-flex justify-content-between">
@@ -56,7 +56,7 @@
                             <img :src="contacts[contattoInChat].avatar" alt="'Immagine ' + contact.name">
                             <div class="p-2">
                                 <h5>{{contacts[contattoInChat].name}}</h5>
-                                <!-- <h6 class="text-secondary">Ultimo accesso {{contacts[contattoInChat].messages[2].date}}</h6>  dinamicizza il [2] -->
+                                <h6 class="text-secondary">Ultimo accesso {{contacts[contattoInChat].messages[contacts[contattoInChat].messages.length - 1].date}}</h6>  <!--contacts[contattoInChat].messages[contacts[contattoInChat].messages.length - 1].date dinamicizza il [2] -->
                             </div>
                         </div>
                         <div id="iconMain" class="d-flex align-items-center m-2">
