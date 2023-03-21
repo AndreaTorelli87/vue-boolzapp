@@ -11,9 +11,9 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body class="p-0 m-0">
-        <div id="bg-top">
-            <div id="app" class="container p-0 d-flex">
-                <aside class="bg-white overflow-scroll">
+        <div id="bg-top" class="pt-lg-5">
+            <div id="app" class="container-lg p-0 d-flex">
+                <aside id="aside" class="bg-white d-sm-block overflow-scroll">
                     <div id="asideTop" class="d-flex justify-content-between align-items-center border-end p-1">
                         <div id="user">
                             <img src="img/avatar_2.jpg" alt="My image">
@@ -38,25 +38,28 @@
                         <input type="text" class="form-control border-start-0" placeholder="Cerca o inizia una nuova chat" v-model="ricerca" @keyup="funzioneDiRicerca">
                     </div>
                     <!-- INIZIO LISTA CONTATTI -->
-                    <div class="py-1 px-3 my-flex contatto border-bottom" v-for="(contact, index) in contacts" v-show="contact.visible" @click="cambiaChat(index)" :class="(index == contattoInChat)?'selezionato':''">
-                        <img class="vertical-align-bottom" :src="contact.avatar" :alt="'Immagine ' + contact.name">
-                        <div class="p-2 w-100">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="fs-5 display-inline-block">{{contact.name}}</h5>
-                                <h6 class="text-secondary display-inline-block">{{contact.messages[contact.messages.length - 1].date}}</h6> <!-- contact.messages[contact.messages.length - 1].date -->
+                    <div id="listaContatti" class="flex-grow-1 d-flex flex-column">
+                        <div class="py-1 px-3 my-flex contatto border-bottom" v-for="(contact, index) in contacts" v-show="contact.visible" @click="cambiaChat(index)" :class="(index == contattoInChat)?'selezionato':''">
+                            <img class="vertical-align-bottom" :src="contact.avatar" :alt="'Immagine ' + contact.name">
+                            <div class="p-2 w-100">
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="fs-5 display-inline-block">{{contact.name}}</h5>
+                                    <h6 class="text-secondary display-inline-block">{{contact.messages[contact.messages.length - 1].date.slice(11, 16)}}</h6> <!-- contact.messages[contact.messages.length - 1].date -->
+                                </div>
+                                <h6 class="text-secondary">{{contact.messages[contact.messages.length - 1].message}}</h6>
                             </div>
-                            <h6 class="text-secondary">{{contact.messages[contact.messages.length - 1].message}}</h6>
                         </div>
                     </div>
                 </aside>
-                <main>
+                <main id="main" class="">
                     <!-- BARRA SOPRA AL MAIN -->
                     <div id="mainTop" class="d-flex justify-content-between align-items-center border-start">
-                        <div class="d-flex m-2">
+                        <div class="d-flex m-2 align-items-center">
+                            <i class="fa-solid fa-arrow-left d-md-none" @click="testiamo()"></i>
                             <img :src="contacts[contattoInChat].avatar" alt="'Immagine ' + contact.name">
                             <div class="p-2">
                                 <h5>{{contacts[contattoInChat].name}}</h5>
-                                <h6 class="text-secondary">Ultimo accesso {{contacts[contattoInChat].messages[contacts[contattoInChat].messages.length - 1].date}}</h6>  <!--contacts[contattoInChat].messages[contacts[contattoInChat].messages.length - 1].date dinamicizza il [2] -->
+                                <h6 class="text-secondary">Ultimo accesso {{contacts[contattoInChat].messages[contacts[contattoInChat].messages.length - 1].date}}</h6>
                             </div>
                         </div>
                         <div id="iconMain" class="d-flex align-items-center m-2">
@@ -69,7 +72,7 @@
                     <div id="mainMiddle" class="p-5 overflow-scroll">
                         <div class="d-flex flex-column" v-for="(contact, index) in contacts[contattoInChat].messages">
                             <div class="p-2 m-2 rounded-3 d-flex justify-content-between msg" :class="contact.status">{{contact.message}}
-                                <span class="fs-6 align-self-end text-secondary">{{oraCorta}}</span>
+                                <span class="fs-6 align-self-end text-secondary">{{contact.date.slice(11, 16)}}</span>
                             </div>
                         </div>
                     </div>

@@ -10,18 +10,13 @@ body{
    background-color: #DADAD3;
 }
 
-.container{
-   height: calc(100vh - 4rem);
+.container-lg{
+   height: calc(100vh - 6rem);
 }
 
 #bg-top{
    background-color: #009688;
    height: 10vh;
-   padding-top: 2rem;
-}
-
-aside{
-   width: 30%;
 }
 
 #asideTop, #mainTop, #mainBottom, #search{
@@ -52,12 +47,12 @@ img{
    padding: 13px 11px;
 }
 
-main{
-   width: 70%;
+aside, main{
+   display: none;
 }
 
 #mainMiddle{
-   height: calc(100% - 10rem);
+   height: calc(100vh - 16rem);
    background-image: url(../img/mine.jpg);
 }
 
@@ -91,4 +86,22 @@ main{
 
 .my-flex{
    display: flex;
+}
+
+
+
+
+
+@media all and (min-width: 768px) {
+
+   aside{
+      width: 35%;
+      display: block;
+   }
+
+   main{
+      width: 65%;
+      display: block;
+   }
+
 }

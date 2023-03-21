@@ -5,7 +5,6 @@ createApp({
   data() {
     return {
       contattoInChat: 0,
-      oraCorta:  DateTime.now().setLocale('it').toLocaleString(DateTime.TIME_24_SIMPLE),
       ricerca: null,
       nuovoMessaggio: null,
       contacts: [
@@ -188,7 +187,7 @@ createApp({
     },
     inviaMessaggio(){
       this.contacts[this.contattoInChat].messages.push({
-        date: this.oraCorta,
+        date: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
         message: this.nuovoMessaggio,
         status: 'sent'
       });
@@ -198,7 +197,7 @@ createApp({
      rispostaAutomatica(){
       setTimeout(() => {
         this.contacts[this.contattoInChat].messages.push({
-          date: this.oraCorta,
+          date: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
           message: "ok",
           status: 'received'
         });
@@ -206,9 +205,17 @@ createApp({
     },
     cambiaChat(contact){
       this.contattoInChat = contact;
+      const main = document.getElementById("main");
+      const aside = document.getElementById("aside");
+      console.log(main.className)
+      // if (main.className != "d-none d-md-block"){
+        main.classList.add("d-sm-block");
+        aside.classList.remove("d-sm-block");
+      // }
     },
-    testiamo(pippo){
-      DateTime.fromObject(pippo).setLocale('it').toLocaleString(DateTime.TIME_24_SIMPLE)
+    testiamo(){
+      document.getElementById("main").classList.remove("d-sm-block");
+      document.getElementById("aside").classList.add("d-sm-block");
     }
   }
 }).mount('#app')
