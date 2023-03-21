@@ -182,9 +182,6 @@ createApp({
         element.visible = false;
       }
     })},
-    stampiamo(pippo){
-      console.log(pippo)
-    },
     inviaMessaggio(){
       this.contacts[this.contattoInChat].messages.push({
         date: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
@@ -205,17 +202,12 @@ createApp({
     },
     cambiaChat(contact){
       this.contattoInChat = contact;
-      const main = document.getElementById("main");
-      const aside = document.getElementById("aside");
-      console.log(main.className)
-      // if (main.className != "d-none d-md-block"){
-        main.classList.add("d-sm-block");
-        aside.classList.remove("d-sm-block");
-      // }
+      document.getElementById("main").classList.add("d-block");
+      document.getElementById("aside").classList.remove("d-block");
     },
     testiamo(){
-      document.getElementById("main").classList.remove("d-sm-block");
-      document.getElementById("aside").classList.add("d-sm-block");
+      document.getElementById("main").classList.remove("d-block");
+      document.getElementById("aside").classList.add("d-block");
     }
   }
 }).mount('#app')
